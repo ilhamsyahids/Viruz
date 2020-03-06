@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viruz", "Viruz\Viruz.csproj", "{722CE329-41A4-45C2-BAA6-C04AE46F733A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Debug|anycpu.Build.0 = Debug|anycpu
+		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Release|anycpu.ActiveCfg = Release|anycpu
+		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+EndGlobal
