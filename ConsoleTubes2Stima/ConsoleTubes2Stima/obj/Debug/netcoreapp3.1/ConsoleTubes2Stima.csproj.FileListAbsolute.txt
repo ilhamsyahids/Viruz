@@ -1,0 +1,11 @@
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\bin\Debug\netcoreapp3.1\ConsoleTubes2Stima.exe
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\bin\Debug\netcoreapp3.1\ConsoleTubes2Stima.deps.json
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\bin\Debug\netcoreapp3.1\ConsoleTubes2Stima.runtimeconfig.json
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\bin\Debug\netcoreapp3.1\ConsoleTubes2Stima.runtimeconfig.dev.json
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\bin\Debug\netcoreapp3.1\ConsoleTubes2Stima.dll
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\bin\Debug\netcoreapp3.1\ConsoleTubes2Stima.pdb
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\obj\Debug\netcoreapp3.1\ConsoleTubes2Stima.csprojAssemblyReference.cache
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\obj\Debug\netcoreapp3.1\ConsoleTubes2Stima.AssemblyInfoInputs.cache
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\obj\Debug\netcoreapp3.1\ConsoleTubes2Stima.AssemblyInfo.cs
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\obj\Debug\netcoreapp3.1\ConsoleTubes2Stima.dll
+C:\Users\Taufik\source\repos\ConsoleTubes2Stima\ConsoleTubes2Stima\obj\Debug\netcoreapp3.1\ConsoleTubes2Stima.pdb
