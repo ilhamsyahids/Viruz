@@ -3,6 +3,12 @@
 
 public partial class MainWindow
 {
+	private global::Gtk.Fixed fixed1;
+
+	private global::Gtk.ColorButton colorbutton1;
+
+	private global::Gtk.Entry entry1;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -10,12 +16,37 @@ public partial class MainWindow
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString("MainWindow");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+		// Container child MainWindow.Gtk.Container+ContainerChild
+		this.fixed1 = new global::Gtk.Fixed();
+		this.fixed1.Name = "fixed1";
+		this.fixed1.HasWindow = false;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.colorbutton1 = new global::Gtk.ColorButton();
+		this.colorbutton1.CanFocus = true;
+		this.colorbutton1.Events = ((global::Gdk.EventMask)(784));
+		this.colorbutton1.Name = "colorbutton1";
+		this.fixed1.Add(this.colorbutton1);
+		global::Gtk.Fixed.FixedChild w1 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.colorbutton1]));
+		w1.X = 255;
+		w1.Y = 117;
+		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.entry1 = new global::Gtk.Entry();
+		this.entry1.CanFocus = true;
+		this.entry1.Name = "entry1";
+		this.entry1.Text = global::Mono.Unix.Catalog.GetString("Test This");
+		this.entry1.IsEditable = true;
+		this.entry1.InvisibleChar = '●';
+		this.fixed1.Add(this.entry1);
+		global::Gtk.Fixed.FixedChild w2 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.entry1]));
+		w2.X = 265;
+		w2.Y = 80;
+		this.Add(this.fixed1);
 		if ((this.Child != null))
 		{
 			this.Child.ShowAll();
 		}
-		this.DefaultWidth = 400;
-		this.DefaultHeight = 300;
+		this.DefaultWidth = 535;
+		this.DefaultHeight = 313;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 	}
