@@ -73,7 +73,7 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Type">TextOnly</property>
-                        <property name="Label" translatable="yes">Check File 1</property>
+                        <property name="Label" translatable="yes">Check File .txt 1</property>
                         <property name="UseUnderline">True</property>
                         <signal name="Pressed" handler="Check1" />
                       </widget>
@@ -114,7 +114,7 @@
                             <property name="Type">TextOnly</property>
                             <property name="Label" translatable="yes">Read File 1</property>
                             <property name="UseUnderline">True</property>
-                            <signal name="Pressed" handler="Check1" />
+                            <signal name="Pressed" handler="Read1" />
                           </widget>
                           <packing>
                             <property name="Position">0</property>
@@ -159,7 +159,7 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Type">TextOnly</property>
-                        <property name="Label" translatable="yes">Check File 2</property>
+                        <property name="Label" translatable="yes">Check File .txt 2</property>
                         <property name="UseUnderline">True</property>
                         <signal name="Pressed" handler="Check2" />
                       </widget>

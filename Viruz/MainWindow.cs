@@ -23,12 +23,16 @@ public partial class MainWindow : Gtk.Window
     {
         try
         {
+            string text = "";
             textview3.Buffer.Text += "Checking File 1...\n";
+            string ext = System.IO.Path.GetExtension(filechooserwidget1.Filename);
+            if (ext != ".txt")
+            {
+                textview3.Buffer.Text += "File 1 is not .txt\n";
+                return;
+            }
             string[] lines = System.IO.File.ReadAllLines(filechooserwidget1.Filename);
 
-            string text = "";
-
-            // Display the file contents by using a foreach loop.
             foreach (string line in lines)
             {
                 text += line + "\n";
@@ -48,12 +52,16 @@ public partial class MainWindow : Gtk.Window
     {
         try
         {
-            textview3.Buffer.Text += "Checking File 1...\n";
+            string text = "";
+            textview3.Buffer.Text += "Checking File 2...\n";
+            string ext = System.IO.Path.GetExtension(filechooserwidget2.Filename);
+            if (ext != ".txt")
+            {
+                textview3.Buffer.Text += "File 2 is not .txt\n";
+                return;
+            }
             string[] lines = System.IO.File.ReadAllLines(filechooserwidget2.Filename);
 
-            string text = "";
-
-            // Display the file contents by using a foreach loop.
             foreach (string line in lines)
             {
                 text += line + "\n";
@@ -66,6 +74,20 @@ public partial class MainWindow : Gtk.Window
         {
             textview3.Buffer.Text += "Checking File 1 failed\n";
             textview2.Buffer.Text = "Something went wrong";
+        }
+    }
+
+    protected void Read1(object sender, EventArgs e)
+    {
+        try
+        {
+            string text = (textview1.Buffer.Text);
+            textview3.Buffer.Text += text[0];
+            textview3.Buffer.Text += text[1];
+            textview3.Buffer.Text += text[2];
+        } catch
+        {
+
         }
     }
 }

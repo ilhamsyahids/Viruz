@@ -109,7 +109,7 @@ public partial class MainWindow
 		this.CheckFile1.CanFocus = true;
 		this.CheckFile1.Name = "CheckFile1";
 		this.CheckFile1.UseUnderline = true;
-		this.CheckFile1.Label = global::Mono.Unix.Catalog.GetString("Check File 1");
+		this.CheckFile1.Label = global::Mono.Unix.Catalog.GetString("Check File .txt 1");
 		this.vbox6.Add(this.CheckFile1);
 		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.CheckFile1]));
 		w4.Position = 1;
@@ -170,7 +170,7 @@ public partial class MainWindow
 		this.CheckFile2.CanFocus = true;
 		this.CheckFile2.Name = "CheckFile2";
 		this.CheckFile2.UseUnderline = true;
-		this.CheckFile2.Label = global::Mono.Unix.Catalog.GetString("Check File 2");
+		this.CheckFile2.Label = global::Mono.Unix.Catalog.GetString("Check File .txt 2");
 		this.vbox8.Add(this.CheckFile2);
 		global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.CheckFile2]));
 		w11.Position = 1;
@@ -263,7 +263,7 @@ public partial class MainWindow
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.ExitAction1.Activated += new global::System.EventHandler(this.exit);
 		this.CheckFile1.Pressed += new global::System.EventHandler(this.Check1);
-		this.btnRead1.Pressed += new global::System.EventHandler(this.Check1);
+		this.btnRead1.Pressed += new global::System.EventHandler(this.Read1);
 		this.CheckFile2.Pressed += new global::System.EventHandler(this.Check2);
 		this.btnRead2.Pressed += new global::System.EventHandler(this.Check1);
 	}
