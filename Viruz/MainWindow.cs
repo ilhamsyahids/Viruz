@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using Gtk;
 
 public partial class MainWindow : Gtk.Window
 {
+    Dictionary<string, List<Tuple<string, double>>> adj;
+    Dictionary<string, int> populasi;
+    string asal;
+    int time;
+
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
         Build();
@@ -23,13 +29,12 @@ public partial class MainWindow : Gtk.Window
     {
         try
         {
+            textview3.Buffer.Text += "[INFO]Checking File 1...\n";
             string text = "";
-            textview3.Buffer.Text += "Checking File 1...\n";
             string ext = System.IO.Path.GetExtension(filechooserwidget1.Filename);
             if (ext != ".txt")
             {
-                textview3.Buffer.Text += "File 1 is not .txt\n";
-                return;
+                throw new Exception("[WARNING]File 1 is not .txt\n");
             }
             string[] lines = System.IO.File.ReadAllLines(filechooserwidget1.Filename);
 
@@ -39,12 +44,12 @@ public partial class MainWindow : Gtk.Window
             }
 
             textview1.Buffer.Text = text;
-            textview3.Buffer.Text += "Checking File 1 done\n";
+            textview3.Buffer.Text += "[INFO]Checking File 1 done\n";
         }
-        catch
+        catch (Exception err)
         {
-            textview3.Buffer.Text += "Checking File 1 failed\n";
-            textview1.Buffer.Text = "Something went wrong";
+            textview3.Buffer.Text += err.Message;
+            textview3.Buffer.Text += "[WARNING]Checking File 1 failed\n";
         }
     }
 
@@ -53,12 +58,12 @@ public partial class MainWindow : Gtk.Window
         try
         {
             string text = "";
-            textview3.Buffer.Text += "Checking File 2...\n";
+            textview3.Buffer.Text += "[INFO]Checking File 2...\n";
             string ext = System.IO.Path.GetExtension(filechooserwidget2.Filename);
             if (ext != ".txt")
             {
-                textview3.Buffer.Text += "File 2 is not .txt\n";
-                return;
+                //textview3.Buffer.Text += "File 2 is not .txt\n";
+                throw new Exception("[WARNING]File 2 is not .txt\n");
             }
             string[] lines = System.IO.File.ReadAllLines(filechooserwidget2.Filename);
 
@@ -68,12 +73,12 @@ public partial class MainWindow : Gtk.Window
             }
 
             textview2.Buffer.Text = text;
-            textview3.Buffer.Text += "Checking File 1 done\n";
+            textview3.Buffer.Text += "[INFO]Checking File 2 done\n";
         }
-        catch
+        catch (Exception err)
         {
-            textview3.Buffer.Text += "Checking File 1 failed\n";
-            textview2.Buffer.Text = "Something went wrong";
+            textview3.Buffer.Text += err.Message;
+            textview3.Buffer.Text += "[WARNING]Checking File 2 failed\n";
         }
     }
 
@@ -81,13 +86,104 @@ public partial class MainWindow : Gtk.Window
     {
         try
         {
-            string text = (textview1.Buffer.Text);
-            textview3.Buffer.Text += text[0];
-            textview3.Buffer.Text += text[1];
-            textview3.Buffer.Text += text[2];
-        } catch
-        {
+            textview3.Buffer.Text += "[INFO]Reading File 1...\n";
+            string U, V;
+            double peluang;
+            int pointer = 0;
+            string[] text = textview1.Buffer.Text.Split('\n', ' ');
+            
+            int edges = int.Parse(text[pointer++]);
+            textview3.Buffer.Text += "Jumlah Edges: " + edges + "\n";
+            Dictionary<string, List<Tuple<string, double>>> adj = new Dictionary<string, List<Tuple<string, double>>>();
 
+            for (int i = 0; i < edges; i++)
+            {
+                U = text[pointer++];
+                textview3.Buffer.Text += U + " ";
+                V = text[pointer++];
+                textview3.Buffer.Text += V + " ";
+                peluang = double.Parse(text[pointer++]);
+                textview3.Buffer.Text += peluang + "\n";
+                var tuple1 = new Tuple<string, double>(V, peluang);
+                if (!adj.ContainsKey(U))
+                {
+                    List<Tuple<string, double>> tempList = new List<Tuple<string, double>>();
+                    tempList.Add(tuple1);
+                    adj[U] = tempList;
+                }
+                else
+                {
+                    adj[U].Add(tuple1);
+
+                }
+            }
+
+            this.adj = adj;
+            textview3.Buffer.Text += "\nIlustrasi Graph :\n";
+            foreach (KeyValuePair<string, List<Tuple<string, double>>> kvp in adj)
+            {
+                Console.WriteLine(kvp.Key);
+                textview3.Buffer.Text += kvp.Key + "\n";
+                foreach (Tuple<string, double> el in kvp.Value)
+                {
+                    Console.WriteLine(kvp.Key + " -> " + el.Item1 + " : " + el.Item2);
+                    textview3.Buffer.Text += kvp.Key + " ->  " + el.Item1 + " : " + el.Item2 + "\n";
+                }
+            }
+            textview3.Buffer.Text += "[INFO]Read File 1 done\n";
+        } catch (Exception err)
+        {
+            textview3.Buffer.Text += err.Message + "\n";
+        }
+    }
+
+    protected void Read2(object sender, EventArgs e)
+    {
+        try
+        {
+            textview3.Buffer.Text += "[INFO]Reading File 2...\n";
+            int count, jumlahNegara, pointer = 0;
+            string U, asal;
+            Dictionary<string, int> populasi = new Dictionary<string, int>();
+            string[] text = textview2.Buffer.Text.Split('\n', ' ');
+
+            jumlahNegara = int.Parse(text[pointer++]);
+            Console.Write("Jumlah negara: " + jumlahNegara);
+            textview3.Buffer.Text += "Jumlah negara: " + jumlahNegara + "\n";
+
+            asal = text[pointer++];
+            Console.Write("Masukkan negara asal: ");
+            textview3.Buffer.Text += "Asal negara: " + asal + "\n";
+
+            for (int i = 0; i < jumlahNegara; ++i)
+            {
+                U = text[pointer++];
+                count = Convert.ToInt32(text[pointer++]);
+                populasi.Add(U, count);
+                textview3.Buffer.Text += U + " " + count + "\n";
+            }
+
+            this.asal = asal;
+            this.populasi = populasi;
+            textview3.Buffer.Text += "[INFO]Read File 2 done.\n";
+        }
+        catch (Exception err)
+        {
+            textview3.Buffer.Text += err.Message + "\n";
+        }
+    }
+
+    protected void Solve(object sender, EventArgs e)
+    {
+        try
+        {
+            int time = int.Parse(entry1.Text);
+            textview3.Buffer.Text += "Time Limit: " + time + "\n";
+            Algorithm algo = new Algorithm(this.populasi, this.adj, this.asal, time);
+            algo.solve();
+        } catch (Exception err)
+        {
+            textview3.Buffer.Text += err.Message + "\n";
         }
     }
 }

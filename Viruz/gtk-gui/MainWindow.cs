@@ -53,6 +53,14 @@ public partial class MainWindow
 
 	private global::Gtk.TextView textview3;
 
+	private global::Gtk.HBox hbox1;
+
+	private global::Gtk.Label label2;
+
+	private global::Gtk.Entry entry1;
+
+	private global::Gtk.Button button1;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -249,9 +257,47 @@ public partial class MainWindow
 		this.vbox4.Add(this.hbox3);
 		global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox3]));
 		w21.Position = 0;
+		// Container child vbox4.Gtk.Box+BoxChild
+		this.hbox1 = new global::Gtk.HBox();
+		this.hbox1.Name = "hbox1";
+		this.hbox1.Spacing = 6;
+		// Container child hbox1.Gtk.Box+BoxChild
+		this.label2 = new global::Gtk.Label();
+		this.label2.Name = "label2";
+		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString("Batas Waktu :");
+		this.hbox1.Add(this.label2);
+		global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.label2]));
+		w22.Position = 0;
+		w22.Expand = false;
+		w22.Fill = false;
+		// Container child hbox1.Gtk.Box+BoxChild
+		this.entry1 = new global::Gtk.Entry();
+		this.entry1.CanFocus = true;
+		this.entry1.Name = "entry1";
+		this.entry1.IsEditable = true;
+		this.entry1.InvisibleChar = '●';
+		this.hbox1.Add(this.entry1);
+		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.entry1]));
+		w23.Position = 1;
+		// Container child hbox1.Gtk.Box+BoxChild
+		this.button1 = new global::Gtk.Button();
+		this.button1.CanFocus = true;
+		this.button1.Name = "button1";
+		this.button1.UseUnderline = true;
+		this.button1.Label = global::Mono.Unix.Catalog.GetString("Solve");
+		this.hbox1.Add(this.button1);
+		global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.button1]));
+		w24.Position = 2;
+		w24.Expand = false;
+		w24.Fill = false;
+		this.vbox4.Add(this.hbox1);
+		global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox1]));
+		w25.Position = 1;
+		w25.Expand = false;
+		w25.Fill = false;
 		this.vbox1.Add(this.vbox4);
-		global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox4]));
-		w22.Position = 1;
+		global::Gtk.Box.BoxChild w26 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox4]));
+		w26.Position = 1;
 		this.Add(this.vbox1);
 		if ((this.Child != null))
 		{
@@ -265,6 +311,7 @@ public partial class MainWindow
 		this.CheckFile1.Pressed += new global::System.EventHandler(this.Check1);
 		this.btnRead1.Pressed += new global::System.EventHandler(this.Read1);
 		this.CheckFile2.Pressed += new global::System.EventHandler(this.Check2);
-		this.btnRead2.Pressed += new global::System.EventHandler(this.Check1);
+		this.btnRead2.Pressed += new global::System.EventHandler(this.Read2);
+		this.button1.Pressed += new global::System.EventHandler(this.Solve);
 	}
 }

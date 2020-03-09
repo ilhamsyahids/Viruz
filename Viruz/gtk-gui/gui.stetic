@@ -200,7 +200,7 @@
                             <property name="Type">TextOnly</property>
                             <property name="Label" translatable="yes">Read File 2</property>
                             <property name="UseUnderline">True</property>
-                            <signal name="Pressed" handler="Check1" />
+                            <signal name="Pressed" handler="Read2" />
                           </widget>
                           <packing>
                             <property name="Position">0</property>
@@ -276,7 +276,56 @@
               </packing>
             </child>
             <child>
-              <placeholder />
+              <widget class="Gtk.HBox" id="hbox1">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Label" id="label2">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">Batas Waktu :</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Entry" id="entry1">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="IsEditable">True</property>
+                    <property name="InvisibleChar">●</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Button" id="button1">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Type">TextOnly</property>
+                    <property name="Label" translatable="yes">Solve</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Pressed" handler="Solve" />
+                  </widget>
+                  <packing>
+                    <property name="Position">2</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
             </child>
           </widget>
           <packing>
