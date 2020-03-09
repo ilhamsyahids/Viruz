@@ -79,7 +79,8 @@ public partial class Algorithm
         {
             if (e.Value == true)
             {
-                Console.WriteLine(e.Key + " = " + time[e.Key]);
+                int populasiNow = (int)Math.Floor(fungsiLogistik(populasi[e.Key], timeLimit - time[e.Key]));
+                Console.WriteLine(e.Key + " t= "+ time[e.Key] + " banyaknya = " + populasiNow);
             }
         }
     }
