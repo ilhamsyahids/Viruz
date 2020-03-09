@@ -49,7 +49,7 @@ public partial class MainWindow : Gtk.Window
         catch (Exception err)
         {
             textview3.Buffer.Text += err.Message;
-            textview3.Buffer.Text += "[WARNING]Checking File 1 failed\n";
+            textview3.Buffer.Text += "[ERROR]Checking File 1 failed\n";
         }
     }
 
@@ -62,7 +62,6 @@ public partial class MainWindow : Gtk.Window
             string ext = System.IO.Path.GetExtension(filechooserwidget2.Filename);
             if (ext != ".txt")
             {
-                //textview3.Buffer.Text += "File 2 is not .txt\n";
                 throw new Exception("[WARNING]File 2 is not .txt\n");
             }
             string[] lines = System.IO.File.ReadAllLines(filechooserwidget2.Filename);
@@ -78,7 +77,7 @@ public partial class MainWindow : Gtk.Window
         catch (Exception err)
         {
             textview3.Buffer.Text += err.Message;
-            textview3.Buffer.Text += "[WARNING]Checking File 2 failed\n";
+            textview3.Buffer.Text += "[ERROR]Checking File 2 failed\n";
         }
     }
 
@@ -122,11 +121,9 @@ public partial class MainWindow : Gtk.Window
             textview3.Buffer.Text += "\nIlustrasi Graph :\n";
             foreach (KeyValuePair<string, List<Tuple<string, double>>> kvp in adj)
             {
-                Console.WriteLine(kvp.Key);
                 textview3.Buffer.Text += kvp.Key + "\n";
                 foreach (Tuple<string, double> el in kvp.Value)
                 {
-                    Console.WriteLine(kvp.Key + " -> " + el.Item1 + " : " + el.Item2);
                     textview3.Buffer.Text += kvp.Key + " ->  " + el.Item1 + " : " + el.Item2 + "\n";
                 }
             }
@@ -148,11 +145,9 @@ public partial class MainWindow : Gtk.Window
             string[] text = textview2.Buffer.Text.Split('\n', ' ');
 
             jumlahNegara = int.Parse(text[pointer++]);
-            Console.Write("Jumlah negara: " + jumlahNegara);
             textview3.Buffer.Text += "Jumlah negara: " + jumlahNegara + "\n";
 
             asal = text[pointer++];
-            Console.Write("Masukkan negara asal: ");
             textview3.Buffer.Text += "Asal negara: " + asal + "\n";
 
             for (int i = 0; i < jumlahNegara; ++i)
