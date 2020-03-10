@@ -1,6 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Threading;
 using Gtk;
+using Shields.GraphViz;
+using Shields.GraphViz.Components;
+using Shields.GraphViz.Models;
+using Shields.GraphViz.Services;
 
 public partial class MainWindow : Gtk.Window
 {
@@ -81,7 +90,7 @@ public partial class MainWindow : Gtk.Window
         }
     }
 
-    protected void Read1(object sender, EventArgs e)
+    protected async void Read1(object sender, EventArgs e)
     {
         try
         {
@@ -117,6 +126,9 @@ public partial class MainWindow : Gtk.Window
                 }
             }
 
+            Microsoft.Msagl.Drawing.Graph peta = new Microsoft.Msagl.Drawing.Graph("");
+            Microsoft.Msagl.GraphViewerGdi.GraphRenderer renderer = new Microsoft.Msagl.GraphViewerGdi.GraphRenderer(peta);
+
             this.adj = adj;
             textview3.Buffer.Text += "\nIlustrasi Graph :\n";
             foreach (KeyValuePair<string, List<Tuple<string, double>>> kvp in adj)
@@ -125,9 +137,18 @@ public partial class MainWindow : Gtk.Window
                 foreach (Tuple<string, double> el in kvp.Value)
                 {
                     textview3.Buffer.Text += kvp.Key + " ->  " + el.Item1 + " : " + el.Item2 + "\n";
+                    peta.AddEdge(kvp.Key, el.Item2.ToString(), el.Item1);
                 }
             }
             textview3.Buffer.Text += "[INFO]Read File 1 done\n";
+            
+            renderer.CalculateLayout();
+            int width = 1000;
+            Bitmap bitmap = new Bitmap(width, (int)(peta.Height * (width / peta.Width)), PixelFormat.Format32bppPArgb);
+            renderer.Render(bitmap);
+            bitmap.Save("peta.png");
+
+
         } catch (Exception err)
         {
             textview3.Buffer.Text += err.Message + "\n";
