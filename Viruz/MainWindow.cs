@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Threading;
 using Gtk;
-using Shields.GraphViz;
-using Shields.GraphViz.Components;
-using Shields.GraphViz.Models;
-using Shields.GraphViz.Services;
 
 public partial class MainWindow : Gtk.Window
 {
@@ -90,7 +83,7 @@ public partial class MainWindow : Gtk.Window
         }
     }
 
-    protected async void Read1(object sender, EventArgs e)
+    protected void Read1(object sender, EventArgs e)
     {
         try
         {
