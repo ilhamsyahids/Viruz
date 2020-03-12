@@ -130,11 +130,10 @@ public partial class MainWindow : Gtk.Window
                 foreach (Tuple<string, double> el in kvp.Value)
                 {
                     textview3.Buffer.Text += kvp.Key + " ->  " + el.Item1 + " : " + el.Item2 + "\n";
-                    peta.AddEdge(kvp.Key, el.Item2.ToString(), el.Item1);
                 }
             }
             textview3.Buffer.Text += "[INFO]Read File 1 done\n";
-            
+                        
             renderer.CalculateLayout();
             int width = 1000;
             Bitmap bitmap = new Bitmap(width, (int)(peta.Height * (width / peta.Width)), PixelFormat.Format32bppPArgb);
@@ -145,6 +144,7 @@ public partial class MainWindow : Gtk.Window
         } catch (Exception err)
         {
             textview3.Buffer.Text += err.Message + "\n";
+            textview3.Buffer.Text += "[ERROR]Reading File 1 failed\n";
         }
     }
 
@@ -179,6 +179,7 @@ public partial class MainWindow : Gtk.Window
         catch (Exception err)
         {
             textview3.Buffer.Text += err.Message + "\n";
+            textview3.Buffer.Text += "[ERROR]Reading File 2 failed\n";
         }
     }
 
@@ -190,9 +191,13 @@ public partial class MainWindow : Gtk.Window
             textview3.Buffer.Text += "Time Limit: " + time + "\n";
             Algorithm algo = new Algorithm(this.populasi, this.adj, this.asal, time);
             algo.solve();
+            var buffer = System.IO.File.ReadAllBytes("../../black.jpg");
+            var pixbuf = new Gdk.Pixbuf(buffer);
+            image1.Pixbuf = pixbuf;
         } catch (Exception err)
         {
             textview3.Buffer.Text += err.Message + "\n";
+            textview3.Buffer.Text += "[ERROR]Solving failed\n";
         }
     }
 }
