@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using Gtk;
 
 public partial class MainWindow : Gtk.Window
@@ -103,7 +104,7 @@ public partial class MainWindow : Gtk.Window
                 textview3.Buffer.Text += U + " ";
                 V = text[pointer++];
                 textview3.Buffer.Text += V + " ";
-                peluang = double.Parse(text[pointer++]);
+                double.TryParse(text[pointer++], NumberStyles.Any, CultureInfo.InvariantCulture, out peluang);
                 textview3.Buffer.Text += peluang + "\n";
                 var tuple1 = new Tuple<string, double>(V, peluang);
                 if (!adj.ContainsKey(U))
