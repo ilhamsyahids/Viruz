@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
+using System.Windows.Forms;
 using Gtk;
+using Application = Gtk.Application;
 
 public partial class MainWindow : Gtk.Window
 {
     Dictionary<string, List<Tuple<string, double>>> adj;
     Dictionary<string, int> populasi;
     string asal;
-    int time;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
@@ -101,7 +104,7 @@ public partial class MainWindow : Gtk.Window
                 textview3.Buffer.Text += U + " ";
                 V = text[pointer++];
                 textview3.Buffer.Text += V + " ";
-                peluang = double.Parse(text[pointer++]);
+                double.TryParse(text[pointer++], NumberStyles.Any, CultureInfo.InvariantCulture, out peluang);
                 textview3.Buffer.Text += peluang + "\n";
                 var tuple1 = new Tuple<string, double>(V, peluang);
                 if (!adj.ContainsKey(U))
@@ -174,12 +177,34 @@ public partial class MainWindow : Gtk.Window
     {
         try
         {
+            System.Windows.Forms.Form form = new System.Windows.Forms.Form();
+            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+            Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+
+            foreach (KeyValuePair<string, List<Tuple<string,double> >> kvp in adj){
+                string node1 = kvp.Key;
+                foreach (Tuple<string,double> el in kvp.Value) {
+                    string node2 = el.Item1;
+                    double peluang = el.Item2;
+                    graph.AddEdge(node1, peluang.ToString(), node2).Attr.ArrowheadAtSource = Microsoft.Msagl.Drawing.ArrowStyle.None;
+                }
+            }
+
+            viewer.Graph = graph;
+            form.SuspendLayout();
+            viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            form.Controls.Add(viewer);
+            form.ResumeLayout();
+            form.Size = new Size(600, 600);
+
             int time = int.Parse(entry1.Text);
             textview3.Buffer.Text += "Time Limit: " + time + "\n";
             Algorithm algo = new Algorithm(this.populasi, this.adj, this.asal, time);
             textview3.Buffer.Text = algo.solve();
-            Viruz.Window win = new Viruz.Window();
-            win.Show();
+            //Viruz.Window win = new Viruz.Window();
+            //win.Show();
+
+            form.Show();
         } catch (Exception err)
         {
             textview3.Buffer.Text += err.Message + "\n";

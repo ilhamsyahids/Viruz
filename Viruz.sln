@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viruz", "Viruz\Viruz.csproj", "{722CE329-41A4-45C2-BAA6-C04AE46F733A}"
 EndProject
 Global
@@ -9,9 +10,15 @@ Global
 		Release|anycpu = Release|anycpu
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Debug|anycpu.ActiveCfg = Debug|anycpu
-		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Debug|anycpu.Build.0 = Debug|anycpu
-		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Release|anycpu.ActiveCfg = Release|anycpu
-		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Release|anycpu.Build.0 = Release|anycpu
+		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{722CE329-41A4-45C2-BAA6-C04AE46F733A}.Release|anycpu.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4A3FA5E-21EF-4E29-A88F-B6B106E0462E}
 	EndGlobalSection
 EndGlobal

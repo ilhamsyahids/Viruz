@@ -107,7 +107,7 @@ public partial class MainWindow
 		// Container child vbox6.Gtk.Box+BoxChild
 		this.filechooserwidget1 = new global::Gtk.FileChooserWidget(((global::Gtk.FileChooserAction)(0)));
 		this.filechooserwidget1.WidthRequest = 400;
-		this.filechooserwidget1.HeightRequest = 350;
+		this.filechooserwidget1.HeightRequest = 250;
 		this.filechooserwidget1.Name = "filechooserwidget1";
 		this.vbox6.Add(this.filechooserwidget1);
 		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.filechooserwidget1]));
@@ -168,7 +168,7 @@ public partial class MainWindow
 		// Container child vbox8.Gtk.Box+BoxChild
 		this.filechooserwidget2 = new global::Gtk.FileChooserWidget(((global::Gtk.FileChooserAction)(0)));
 		this.filechooserwidget2.WidthRequest = 400;
-		this.filechooserwidget2.HeightRequest = 350;
+		this.filechooserwidget2.HeightRequest = 250;
 		this.filechooserwidget2.Name = "filechooserwidget2";
 		this.vbox8.Add(this.filechooserwidget2);
 		global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.filechooserwidget2]));
@@ -303,8 +303,8 @@ public partial class MainWindow
 		{
 			this.Child.ShowAll();
 		}
-		this.DefaultWidth = 1225;
-		this.DefaultHeight = 932;
+		this.DefaultWidth = 800;// 1225;
+		this.DefaultHeight = 600;// 932;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.ExitAction1.Activated += new global::System.EventHandler(this.exit);
