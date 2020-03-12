@@ -200,9 +200,14 @@ public partial class MainWindow : Gtk.Window
             int time = int.Parse(entry1.Text);
             textview3.Buffer.Text += "Time Limit: " + time + "\n";
             Algorithm algo = new Algorithm(this.populasi, this.adj, this.asal, time);
-            textview3.Buffer.Text = algo.solve();
-            //Viruz.Window win = new Viruz.Window();
-            //win.Show();
+            
+            List<Tuple<string, int, int>> T = algo.solve();
+            string info = "";
+            foreach (Tuple<string, int, int> el in T)
+            {
+                info += el.Item1 + " saat " + el.Item2 + " satuan waktu dengan banyak yang tertular: " + el.Item3 + "\n";
+            }
+            textview3.Buffer.Text = info;
 
             form.Show();
         } catch (Exception err)

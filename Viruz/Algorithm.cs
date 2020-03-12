@@ -21,11 +21,11 @@ public partial class Algorithm
         return (1.0) * populasi / (1 + (populasi - 1) * Math.Exp(-0.25 * time));
     }
 
-    public string solve() {
+    public List<Tuple<string, int, int>> solve() {
         return bfs(this.populasi, this.adj, this.asal, this.time);
     }
 
-    public string bfs(Dictionary<string, int> populasi, Dictionary<string, List<Tuple<string, double>>> adj, string asal, int timeLimit)
+    public List<Tuple<string, int, int>> bfs(Dictionary<string, int> populasi, Dictionary<string, List<Tuple<string, double>>> adj, string asal, int timeLimit)
     {
         string u, result;
 
@@ -73,6 +73,7 @@ public partial class Algorithm
 
         //Console.WriteLine("Yang tertular");
         result = "Yang tertular\n";
+        List<Tuple<string, int, int>> T = new List<Tuple<string, int, int>>();
         foreach (KeyValuePair<string, bool> e in isTertular)
         {
             if (e.Value == true)
@@ -80,8 +81,9 @@ public partial class Algorithm
                 int populasiNow = (int)Math.Floor(fungsiLogistik(populasi[e.Key], timeLimit - time[e.Key]));
                 //Console.WriteLine(e.Key + " t= "+ time[e.Key] + " banyaknya = " + populasiNow);
                 result += e.Key + " saat " + time[e.Key] + " satuan waktu dengan banyak yang tertular: " + populasiNow + "\n";
+                T.Add(new Tuple<string, int, int>(e.Key, time[e.Key], populasiNow));
             }
         }
-        return result;
+        return T;
     }
 }
