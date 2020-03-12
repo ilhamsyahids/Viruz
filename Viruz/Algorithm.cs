@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-//namespace Viruz
-//{
 public partial class Algorithm
 {
     Dictionary<string, List<Tuple<string, double>>> adj;
@@ -23,13 +21,13 @@ public partial class Algorithm
         return (1.0) * populasi / (1 + (populasi - 1) * Math.Exp(-0.25 * time));
     }
 
-    public void solve() {
-        bfs(this.populasi, this.adj, this.asal, this.time);
+    public string solve() {
+        return bfs(this.populasi, this.adj, this.asal, this.time);
     }
 
-    public void bfs(Dictionary<string, int> populasi, Dictionary<string, List<Tuple<string, double>>> adj, string asal, int timeLimit)
+    public string bfs(Dictionary<string, int> populasi, Dictionary<string, List<Tuple<string, double>>> adj, string asal, int timeLimit)
     {
-        string u;
+        string u, result;
 
         Dictionary<string, int> time = new Dictionary<string, int>();
         Dictionary<string, bool> isTertular = new Dictionary<string, bool>();
@@ -73,83 +71,17 @@ public partial class Algorithm
             }
         }
 
-        Console.WriteLine("Yang tertular");
-
+        //Console.WriteLine("Yang tertular");
+        result = "Yang tertular\n";
         foreach (KeyValuePair<string, bool> e in isTertular)
         {
             if (e.Value == true)
             {
                 int populasiNow = (int)Math.Floor(fungsiLogistik(populasi[e.Key], timeLimit - time[e.Key]));
-                Console.WriteLine(e.Key + " t= "+ time[e.Key] + " banyaknya = " + populasiNow);
+                //Console.WriteLine(e.Key + " t= "+ time[e.Key] + " banyaknya = " + populasiNow);
+                result += e.Key + " saat " + time[e.Key] + " satuan waktu dengan banyak yang tertular: " + populasiNow + "\n";
             }
         }
+        return result;
     }
-
-    //public static void solve()
-    //{
-    //    string u, v, asal;
-    //    double peluang;
-    //    int x, jumlahNegara;
-
-    //    Console.Write("Masukkan jumlah edges: ");
-    //    int jumlahEdges = Convert.ToInt32(Console.ReadLine());
-    //    Dictionary<string, List<Tuple<string, double>>> adj = new Dictionary<string, List<Tuple<string, double>>>();
-
-    //    for (int i = 0; i < jumlahEdges; ++i)
-    //    {
-    //        Console.Write("masukkan kota asal" + "Ke-" + i + ": ");
-    //        u = Convert.ToChar(Console.ReadLine());
-
-    //        Console.Write("masukkan kota tujuan" + "Ke-" + i + ": ");
-    //        v = Convert.ToChar(Console.ReadLine());
-
-    //        Console.Write("peluang: ");
-    //        peluang = double.Parse(Console.ReadLine());
-    //        var tuple1 = new Tuple<string, double>(v, peluang);
-    //        if (!adj.ContainsKey(u))
-    //        {
-    //            List<Tuple<string, double>> tempList = new List<Tuple<string, double>>();
-    //            tempList.Add(tuple1);
-    //            adj[u] = tempList;
-    //        }
-    //        else
-    //        {
-    //            adj[u].Add(tuple1);
-
-    //        }
-
-    //    }
-
-    //    Console.WriteLine("ilustrasi graphnya");
-    //    foreach (KeyValuePair<string, List<Tuple<string, double>>> kvp in adj)
-    //    {
-    //        Console.WriteLine(kvp.Key);
-    //        foreach (Tuple<string, double> el in kvp.Value)
-    //        {
-    //            Console.WriteLine(kvp.Key + " -> " + el.Item1 + " : " + el.Item2);
-    //        }
-    //    }
-
-    //    Dictionary<string, int> populasi = new Dictionary<string, int>();
-
-    //    Console.Write("Masukkan jumlah negara: ");
-    //    jumlahNegara = Convert.ToInt32(Console.ReadLine());
-
-    //    Console.Write("Masukkan negara asal: ");
-    //    asal = Convert.ToChar(Console.ReadLine());
-    //    for (int i = 0; i < jumlahNegara; ++i)
-    //    {
-    //        Console.Write("Negara " + "Ke - " + i + ": ");
-    //        u = Convert.ToChar(Console.ReadLine());
-
-    //        Console.Write("Populasi: ");
-    //        x = Convert.ToInt32(Console.ReadLine());
-    //        populasi.Add(u, x);
-    //    }
-
-    //    Console.Write("masukkan batas waktu: ");
-    //    int timeLimit = Convert.ToInt32(Console.ReadLine());
-    //    bfs(populasi, adj, asal, timeLimit);
-    //}
 }
-//}

@@ -177,10 +177,9 @@ public partial class MainWindow : Gtk.Window
             int time = int.Parse(entry1.Text);
             textview3.Buffer.Text += "Time Limit: " + time + "\n";
             Algorithm algo = new Algorithm(this.populasi, this.adj, this.asal, time);
-            algo.solve();
-            var buffer = System.IO.File.ReadAllBytes("../../black.jpg");
-            var pixbuf = new Gdk.Pixbuf(buffer);
-            image1.Pixbuf = pixbuf;
+            textview3.Buffer.Text = algo.solve();
+            Viruz.Window win = new Viruz.Window();
+            win.Show();
         } catch (Exception err)
         {
             textview3.Buffer.Text += err.Message + "\n";
