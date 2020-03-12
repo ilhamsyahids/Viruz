@@ -206,6 +206,10 @@ public partial class MainWindow : Gtk.Window
             foreach (Tuple<string, int, int> el in T)
             {
                 info += el.Item1 + " saat " + el.Item2 + " satuan waktu dengan banyak yang tertular: " + el.Item3 + "\n";
+                Color yourColor = Color.FromArgb(Convert.ToInt32("FF00FF", 16));
+                graph.FindNode(el.Item1).Attr.FillColor = Microsoft.Msagl.Drawing.Color.MediumVioletRed;
+                graph.FindNode(el.Item1).LabelText = el.Item1 + " [" + el.Item3 + "]";
+                
             }
             textview3.Buffer.Text = info;
 
